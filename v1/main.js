@@ -1,5 +1,6 @@
 $.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@a1e249e/v1/body.html',function(data){
   $('body').html(data);
+  setTimeout(function(){
   var mymap = L.map('map').setView([44.43225,26.10626], 11.5);
                 var layer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
                     maxZoom: 17
@@ -71,5 +72,6 @@ $.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@a1e249e/v1/body.
                           }
                       }).addTo( mymap );
                     $('select').select2();
-                })
+                }) 
+    },100);
 });
