@@ -1,4 +1,4 @@
-$.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@a1e249e/v1/body.html',function(data){
+$.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@latest/v1/body.html',function(data){
   $('body').html(data);
   setTimeout(function(){
   var mymap = L.map('map').setView([44.43225,26.10626], 11.5);
@@ -50,7 +50,7 @@ $.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@a1e249e/v1/body.
                         }
                     })
                 })
-                $.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@master/v1/stations.json',function(data){
+                $.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@latest/v1/stations.json',function(data){
                     geojsonFormattedLocations = data.map(function(location) {
                         return {
                             type: 'Feature',
