@@ -16,11 +16,12 @@ $.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@latest/v1/body.h
                   }
                   return L.circleMarker( latlng, options );
                 }
-                var cached;
+                var cached,cachedNAME;
                 mymap.on('popupopen', function(e) {
                   $('#save').removeAttr('disabled');
                   var marker = e.popup._source;
                   cached = marker.feature.properties.stop_id;
+                  cachedNAME = marker.feature.properties.name;
                 });
                 (function(){
                     var originalInitTile = L.GridLayer.prototype._initTile
@@ -39,10 +40,11 @@ $.get('https://cdn.jsdelivr.net/gh/BodoMinea/DepartureBoardsAPI@latest/v1/body.h
                     if($('select').val()!=0){
                         $('#save').removeAttr('disabled');
                         cached = $('select').val();
+                        cachedNAME = $("select option:selected").text();
                     }
                 })
                 $('#save').on('click',function(){
-                    $.get('/change?id='+cached,function(datax){
+                    $.get('/change?id='+cached+"&name="+cachedNAME,function(datax){
                         if(datax=="OK"){
                             toastr.success('Configurarea a fost actualizată!');
                         }else{
